@@ -45,7 +45,18 @@ Not a gate. Read on 2026-11-13 between 20:40Z and 21:20Z. This is our own TN10 t
 
 ## Offline rehearsal, recorded before `PRE-RUN-OPEN`
 
-REHEARSAL_PLACEHOLDER
+Two offline rehearsals ran on the desk against the fake node (no network; a fake family sender and a fake mint line, a local bare origin), with 2-minute steps (`STORM_LANE_MIN=2`, `STORM_RET_MIN=2`) and the stale family end on purpose. Their counts are made up by the fakes and are not reported anywhere; they only show that the runner's path runs as written.
+
+- `p24-a` (2026-11-13 21:07Z, stopped early at 21:12Z by us): it showed that the per-minute "families attempting" check counted family 5 (the mint line), which the family sender does not hop, so every minute was marked not clean. Fixed in the runner (only families 1–4 are checked there). `p24-b` (21:12Z to 21:32Z) then ran the full path to `RUNNER_EXIT 0`, and showed that the mint line's normal end at its cap was logged as a process exit. Fixed: when the mint line has written its totals, its end is logged as `MINT_LINE_DONE info`.
+- `p24-c` (the full path, on the final files: the same files, by sha256, as the live run on the desk and this repo's `tools/`), 21:33:52Z to 21:53:31Z. Preflight passed; `BUDGET_CHECK` logged; `FAMILY_END` from the run start, `FAMILY_END_CHECK ok=1` before the steps and at RETURN's close; genesis 5 of 5; `FEE_SPLIT` floor 100 and kcc 100 on the desk; families attempting 4 of 4; the mint line up, ended at its cap with `MINT_LINE_DONE`; `GUEST not-started`; BASE, HOLD-1, HOLD-2, HOLD-3, the pinned HOLD-4 and RETURN rendered, every minute clean; `MINT.md`, `TARGET.md`, `TIMELINE.md`, `MEMPOOL.md` and `METHOD.md` rendered; no `ERROR` line; `RUNNER_EXIT 0`.
+- Seen, not changed: `TARGET.md`'s rotation line counts ids checked and ids still listed, not read errors; the read errors are in the private `logs/rotation.jsonl` and go into the analysis. Against the real node, a missing mempool entry answers "Transaction … not found", which the sampler counts as gone (checked read-only at 21:13Z).
+
+**Re-read just before `PRE-RUN-OPEN`** (read-only, 2026-11-13 21:45Z to 21:50Z):
+
+- Disk: desk 317 GB free, Mini 293 GB, box 102 GB: over the floor (100, 100, 20).
+- Both nodes, two readings 20 s apart, at 21:46:42Z and 21:46:45Z. Desk: synced, kaspad 2.1.0, UTXO index, 8 peers, tip age 0.4 s and 0.2 s, 182 DAA in 20 s. Mini: synced, kaspad 2.1.0, UTXO index, 8 peers, tip age 0.2 s and 0.6 s, 168 DAA in 20 s.
+- `budget21.mjs` 21:49Z (its default 72 planned family minutes, more than this run's 25): synced, key 0 137,430 usable (3,921 coins over 3 tKAS), projected end 82,710 over 26,000: ok.
+- The hash file is on origin (five rows, On origin 21:18:03Z).
 
 ## Status after the live run
 
