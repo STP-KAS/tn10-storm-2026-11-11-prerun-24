@@ -4,6 +4,8 @@
 
 # Lessons, pre-run 24
 
+> **Correction (2026-11-13, after the run):** we wrote that no tic-tac-toe runner or guest binary was on the desk, the Mini or the box. That was not quite right. Binaries from our 26 Sep retest (`ttd`, `ttflow` and a guest ELF, built then against vprogs `bcebf59`) were on the box under a path we did not look in. What did not exist yet was a runner kit to drive them inside a pre-run with its gates. So the guest line was still not run and stays `not met`, but the reason is "no runner kit yet", not "nothing on disk". We are sorry for the imprecise line.
+
 | Field | Value |
 |---|---|
 | Target | one covenant hop, one KCC-20 mint and one tic-tac-toe guest carrier accepted on the desk node in the same open window |
@@ -20,3 +22,4 @@
 6. **Two rehearsal catches before the open were real.** The per-minute "families attempting" check counted the mint line (would have marked every minute not clean), and the mint line's normal end looked like a process exit. Both fixed before the open, and the third rehearsal passed on the final files.
 7. **Stale wording in the runner's renders.** `logs/METHOD.md` and the step files still mention "our own heavy lane", lanes and the duel from pre-run 23's templates. There was no heavy lane in pre-run 24 (lane columns read 0). The numbers are right; the text should be trimmed in the next runner.
 8. **Spend was tiny against the funding.** About 276 tKAS of fees (families and mints) against 53,000 moved. Key 0 holds 130,587 usable tKAS after the run, enough for many more runs.
+9. **Key 0's drop, closed (read-only, after the run).** Each covenant hop pays one KCC-20 token output of exactly 1 tKAS (`TOKEN = 100_000_000` sompi in the reference builder `kcc20 storm`; the desk's builder source has the same sha256 prefix as our reference copy). 6,682 hops OK × 1 tKAS + 274.67 tKAS of hop fees ≈ 6,957 tKAS, against key 0's usable drop of 6,843 tKAS (137,430 → 130,587; "usable" counts coins over 3 tKAS less 3 each, so it is not an exact ledger). So the drop is the token outputs our own hops created, not a loss.

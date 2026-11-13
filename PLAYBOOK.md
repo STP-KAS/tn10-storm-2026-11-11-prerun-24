@@ -41,6 +41,7 @@ Not a gate. Read on 2026-11-13 between 20:40Z and 21:20Z. This is our own TN10 t
 - **BUDGET_CHECK** (`budget21.mjs`, read-only, after the funding): key 0 **137,611 usable tKAS**, **3,930 coins over 3 tKAS**, projected end **107,211** at 760 tKAS a planned family minute over 40 minutes (the runner repeats it with this run's 25): over 26,000 and over 2,500 coins: **ok**. No split was needed.
 - **Bot free check, once, read-only, 20:58:02Z.** The public node REVIEW-01 added as a candidate answered synced, DAA moving, with a node id distinct from the desk's kept nodes and from our own: it is the one free node. Names that timed out were left out of the active list and logged privately. Nodes known only by a raw address are read-only. The bot's sender is capped at 60 payments, one at a time, and reads its coins from a kept node, not from the free node.
 - **Guest:** no built tic-tac-toe runner or guest binary found on the desk, the Mini or the box. Not compiled (plan: no compile tonight). The guest line is `not met`.
+  *Correction after the run:* the 26 Sep binaries (`ttd`, `ttflow`, guest ELF) were on the box under another path; what was missing was a runner kit to drive them in a pre-run. See [logs/LESSONS.md](logs/LESSONS.md).
 - Known risks, not fixed mid-run: first public mints in this series on today's binaries; one run, short steps; the outside heavy stream may be there (we do not attribute it).
 
 ## Offline rehearsal, recorded before `PRE-RUN-OPEN`

@@ -52,4 +52,4 @@ Submit to "next minter seen" on the desk node: min 501 ms, median 1,017 ms, max 
 
 - Funding before the run (logged): 53,000 tKAS from our own mining wallet to key 0 (one transaction, 0.035 tKAS fee); 9 coin transactions from key 0 to keys 3–7 (about 0.022 tKAS of fees).
 - In the run: family hop fees 274.67 tKAS; mint fees 1.22 tKAS; genesis 5 transactions at 200 on the builder's mass.
-- Key 0 after the run (`budget21.mjs`, read-only, 22:30Z): 130,587 usable tKAS (3,666 coins over 3 tKAS), from 137,430 before; coins under 3 tKAS rose from 1,874 to 2,129. The drop is more than the fees; we have not traced the rest (change and covenant outputs on our own keys are the likely place). Still far over the 26,000 line.
+- Key 0 after the run (`budget21.mjs`, read-only, 22:30Z): 130,587 usable tKAS (3,666 coins over 3 tKAS), from 137,430 before; coins under 3 tKAS rose from 1,874 to 2,129. The drop is more than the fees. Closed after the run: each hop pays a 1 tKAS token output (reference builder `TOKEN`), so 6,682 hops account for about 6,682 tKAS of it (see LESSONS item 9). Still far over the 26,000 line.
