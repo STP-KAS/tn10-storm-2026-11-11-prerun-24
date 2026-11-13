@@ -1,6 +1,6 @@
-# sixteen.ps1: pre-run 23's sixteen-family hash path on the desk. Run with PowerShell 7 (pwsh).
+# sixteen.ps1: pre-run 24's hash path (five rows: families 1-4 and the KCC-20 launch; the file keeps the name SIXTEEN.md)
 # Build the sixteen genesis transactions (no submit), write SIXTEEN.md and the private bundle, then publish it to
-# pre-run 23 origin with an On origin line. Never prints an id. Not the old 8/32 publisher (tn10-hash-publish.*).
+# pre-run 24 origin with an On origin line. Never prints an id. Not the old 8/32 publisher (tn10-hash-publish.*).
 # Hashes first: publish does not wait for PRE-RUN-OPEN or MINI-ARMED. It stops on BOT-HALT, FAILED, or an existing
 # SIXTEEN.md. It is not an arm and not a send. After a publish, do not rebuild: the family submit uses that bundle.
 #

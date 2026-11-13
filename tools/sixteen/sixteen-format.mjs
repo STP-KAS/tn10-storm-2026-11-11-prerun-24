@@ -1,5 +1,5 @@
 // pre-run 24: FAMILIES comes from family-fees.mjs (5), not a fixed 16.
-// sixteen-format.mjs: the one shape of hashes/SIXTEEN.md for pre-run 23. Pure functions. No ids are ever written.
+// sixteen-format.mjs: the one shape of hashes/SIXTEEN.md for pre-run 24 (five rows; the name is kept). Pure functions. No ids are ever written.
 // Row: family label, cohort, sha256 of the lowercase hex covenant id. Cohorts come from family-fees.mjs: floor 1-4 (100), r126 5-7, r150 8-10, (pre-run 18: node rates)
 // r150 11-13, r200 14-16, all on the desk's private node.
 import crypto from "node:crypto";

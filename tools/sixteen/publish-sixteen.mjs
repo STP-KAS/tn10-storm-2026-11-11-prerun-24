@@ -1,4 +1,4 @@
-// publish-sixteen.mjs: push a built hashes/SIXTEEN.md to pre-run 23 origin, then read the commit time back from origin
+// publish-sixteen.mjs: push a built hashes/SIXTEEN.md to pre-run 24 origin, then read the commit time back from origin
 // and push the On origin line. Two commits, one file. Does not build, does not submit. TESTNET-10 run repo only.
 //
 //   node publish-sixteen.mjs --repo <local clone> --git <full path to git> --gates-only
@@ -41,7 +41,7 @@ const showOrigin = (rel) => read(["show", `origin/main:${rel}`], rel);
 // ---- origin and gates --------------------------------------------------------------------------------------------
 const url = read(["remote", "get-url", "origin"], "remote").trim();
 const remoteIsLocal = !/^(https?:|git@|ssh:)/i.test(url);
-if (!remoteIsLocal && !/STP-KAS\/tn10-storm-2026-11-11-prerun-23(\.git)?$/i.test(url)) stop("wrong_repo");
+if (!remoteIsLocal && !/STP-KAS\/tn10-storm-2026-11-11-prerun-24(\.git)?$/i.test(url)) stop("wrong_repo");
 fetch();
 const gates = {
   pre_run_open: onOrigin("logs/PRE-RUN-OPEN.md") && /PRE_RUN_OPEN/.test(showOrigin("logs/PRE-RUN-OPEN.md")),
