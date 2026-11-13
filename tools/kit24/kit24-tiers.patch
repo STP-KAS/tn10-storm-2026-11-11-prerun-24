@@ -1,0 +1,23 @@
+--- kit23/family-fees.mjs
++++ kit24/family-fees.mjs
+@@ -1,3 +1,6 @@
++// PRE-RUN 17 TIERS (kit24 = kit23 with this table): four fixed tiers, four families each, node rates: floor 1-4 100,
++// r150 5-8 150, r300 9-12 300, r450 13-16 450. They are the bystanders: the duel is between our two heavy lanes. liveRate()
++// stays (it returns the table rate for every family; there is no esc tier).
+ // PRE-RUN 16 TIERS (kit23 = kit22 with this table and live esc rates): floor 1-4 fixed 100, r300 5-7 fixed 300, esc 8-16
+ // escalating (start 150; the duel controller moves it, floor 100, cap 2,000). Node rates (fee / node mass) as in pre-runs 14-15.
+ import fs from "node:fs";
+@@ -23,9 +26,10 @@
+ export const GENESIS_RATE = 200;
+ export const TIERS = [
+   { cohort: "floor", rate: 100, from: 1, to: 4, path: "desk" },
+-  { cohort: "r300", rate: 300, from: 5, to: 7, path: "desk" },
+-  { cohort: "esc", rate: 150, from: 8, to: 16, path: "desk", esc: true },   // pre-run 16: start rate; the live rate is control/ESC-RATE
+-];
++  { cohort: "r150", rate: 150, from: 5, to: 8, path: "desk" },
++  { cohort: "r300", rate: 300, from: 9, to: 12, path: "desk" },
++  { cohort: "r450", rate: 450, from: 13, to: 16, path: "desk" },
++];   // pre-run 17: four fixed tiers, the bystanders of the lane-against-lane duel; no family moves (no esc cohort)
+ // pre-run 16: the live rate of an escalating family. The duel controller (desk runner) writes the esc cohort's rate to
+ // <run_dir>/control/ESC-RATE (or STORM_ESC_FILE). Read at most once a second; clamped to [ESC_FLOOR, ESC_CAP]; any read
+ // failure gives the start rate. Fixed cohorts always give their table rate.

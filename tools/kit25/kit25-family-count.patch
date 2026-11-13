@@ -1,0 +1,20 @@
+--- a/sender.mjs	2026-11-13 01:51:22.000000000 +0100
++++ b/sender.mjs	2026-11-13 22:00:18.592428989 +0100
+@@ -1,3 +1,4 @@
++// kit25 (pre-run 24): kit24 with the family count from family-fees.mjs (5; the schedule hops families 1-4 only).
+ // kit21 (pre-run 14): kit20 plus hops priced on their node-side mass (covenant.mjs buildHop); each submit row also logs bill_rate,
+ // node_mass, node_rate (fee / node mass as computed by kit21) and builds. Nothing else changed.
+ // kit19 (pre-run 9): kit18 plus one change. Families on a public path (family-fees.mjs PUBLIC_FAMILIES, 11-13) read their
+@@ -18,10 +19,10 @@
+ process.on("unhandledRejection", (e) => console.error("unhandled", String(e?.message || e)));
+ import { CFG, P, phase, iso, sleep, to, stepAt, END, STOPF, reason, connect, readState, writeState, arg } from "./lib.mjs";
+ import { startBuilder, buildHop, catchUp, Pool, keyAddress, probeBack, materialize } from "./covenant.mjs";
+-import { feeTableMisses, FEE_SPLIT_LINE, PUBLIC_FAMILIES } from "./family-fees.mjs";
++import { feeTableMisses, FEE_SPLIT_LINE, PUBLIC_FAMILIES, FAMILY_COUNT } from "./family-fees.mjs";
+ import { mempoolSkip } from "./mempool-skip.mjs";   // kit17 (pre-run 7, lock line (i)): the skip clears, or does not apply
+ // kit19 (pre-run 9): the run config must carry family-fees.mjs's rates for all sixteen families, or this sender does not start.
+-{ const miss = feeTableMisses(CFG.families); if (miss.length || CFG.families.length !== 16) { console.error("fee table: families " + (miss.join(",") || "count")); process.exit(5); } }
++{ const miss = feeTableMisses(CFG.families); if (miss.length || CFG.families.length !== FAMILY_COUNT) { console.error("fee table: families " + (miss.join(",") || "count")); process.exit(5); } }
+ const CATCHUP_MS = Number(CFG.catchup_ms || 2000);   // 30 Oct a5: catch-up cap
+ 
+ const LABEL = arg("label"), URL = arg("node"), SOURCE = arg("source", "coord");
