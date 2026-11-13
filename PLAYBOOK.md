@@ -60,7 +60,14 @@ Two offline rehearsals ran on the desk against the fake node (no network; a fake
 
 ## Status after the live run
 
-AFTER_PLACEHOLDER
+Read after the run, 2026-11-13 22:27Z to 22:35Z. Details: [logs/ANALYSIS.md](logs/ANALYSIS.md), [logs/LESSONS.md](logs/LESSONS.md).
+
+- `PRE-RUN-OPEN` 21:55:45Z (22:55 Brussels), `MINI-ARMED` 21:56:58Z (22:56), genesis 5 of 5 21:58:40Z, BASE to RETURN on origin 22:03:22Z to 22:21:22Z, runner end 22:27:14Z. Every minute clean; the counter kept pace in all 16; Mini READ 16 of 16 with the same floor and kcc counts per step.
+- Target: covenant hop **met** (6,678 accepted), KCC-20 mint **met** (30 of 30, 0 rejected), guest carrier **not met** (no runner on disk), combined **not met**. Retry count 0.
+- Rotation sample: 910 of our accepted ids, 0 still listed, 0 read errors.
+- Bot: `NO SEND suspend` (a free node existed, but the waiter read HOLD-3 245 s late; corrected file 02b89ba).
+- Spend: family fees 274.67 tKAS, mint fees 1.22 tKAS. Key 0 after: 130,587 usable (3,666 coins over 3 tKAS). Keys 1 and 2 not touched. No fix to the runner during the run.
+- Desk kaspad, `serve.mjs` and its keeper were not stopped or restarted; the Mini node was not wiped.
 
 ## When something breaks
 

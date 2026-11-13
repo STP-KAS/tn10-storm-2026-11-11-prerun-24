@@ -11,12 +11,14 @@
 | Field | Value |
 |---|---|
 | Target | one covenant hop, one KCC-20 mint and one tic-tac-toe guest carrier, each accepted on the desk node in the same open window ([target plan](https://github.com/STP-KAS/tn10-target-plan/blob/main/plan/PLAN.md), pre-run 24 card) |
-| Met or not met | open: written after RETURN |
+| Met or not met | **not met** (combined). Covenant hop met (6,678 accepted on the desk node); KCC-20 mint met (30 of 30); guest carrier not met (no tic-tac-toe runner on disk, no compile tonight). [logs/LESSONS.md](logs/LESSONS.md) |
 | Retry count | 0 (first attempt at this target; retries nothing) |
-| Core tags | 1 (mempool rotation, issue #1146: a light 60-second id sample, not a full dump) |
-| Status | in-progress |
+| Core tags | 1 (mempool rotation, issue #1146: 910 of our accepted ids sampled 60 s apart, 0 still listed; light load only) |
+| Status | done (22:55–23:27 Brussels, 21:55:45Z–22:27:14Z) |
 
 **Where this starts.** Pre-runs 1 to 23 are in [tn-master](https://github.com/STP-KAS/tn-master); pre-run 21 was void. The index is the [pre-run 2 README](https://github.com/STP-KAS/tn10-storm-2026-11-11-prerun-2#pre-runs-in-this-rehearsal). This repo starts from [pre-run 23's locks/LOCKED.md](https://github.com/STP-KAS/tn10-storm-2026-11-11-prerun-23/blob/26a2b63/locks/LOCKED.md) at commit 26a2b63, copied here as [locks/LOCKED.md](locks/LOCKED.md), with a pre-run 24 section added at the end.
+
+**Result, in one line (our own reading):** with four covenant families at the floor and one fresh KCC-20 launch in one window, the desk node accepted 6,678 covenant hops and 30 of 30 mints (0 rejected); the guest carrier was not run because no runner was built on disk, so the combined target is not met. The bot filed `NO SEND suspend` (late, a box-side stall). Mini read every minute with the same counts.
 
 ## What pre-run 24 tries: the combined whole, modest
 

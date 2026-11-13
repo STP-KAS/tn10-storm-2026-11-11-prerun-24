@@ -718,3 +718,11 @@ These lines are baked into this repo's own pastes. They come from pre-run 23's l
 ## Locked during pre-run 24
 
 When a fix works, append it here, one block per fix: UTC time, what failed or worked, what was changed, why that change stays.
+
+```
+- 2026-11-13T22:27:14Z.
+- What worked: funding as a logged step (53,000 tKAS) with BUDGET_CHECK passing (137,430 usable at the run, projected end 118,430); the disk floor written before the open; three rehearsals (p24-a and p24-b caught two runner faults, p24-c passed on the final files). Live: genesis 5 of 5; 6,678 covenant hops and 30 of 30 mints accepted on the desk node in one window; every minute clean; Mini READ 16 of 16 with the same counts; rotation 0 of 910 still listed.
+- What failed: the guest carrier line (no runner on disk; not a run fault, a precondition). The bot read HOLD-3 245 s late (fetch stalls on the box, likely a paused VM) and filed NO SEND suspend; its first file wrongly said no-free-node.
+- What was changed: during the run, nothing on the desk or Mini. After the minute, the bot file was corrected by a new commit (02b89ba).
+- Why that change stays, for the next repo: keep the mint line (one at a time, cap, accept wait) and the rotation sampler; build and review the guest runner before trying the combined target again; give the bot waiter a second HOLD-3 path and a heartbeat, and a renderer case for "free but late"; trim the heavy-lane wording from the runner's renders.
+```
