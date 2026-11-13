@@ -1,4 +1,4 @@
-NO SEND no-free-node (late check)
+NO SEND suspend (late check: a free node answered, but only 31 s into the pinned minute)
 
 # HOLD-4, bot sender log, pre-run 24
 
@@ -8,11 +8,13 @@ Pinned minute (UTC): 2026-11-13T22:16. It is the first whole UTC minute whose st
 
 The bot sent nothing in this minute. Submit-OK 0, attempts 0, rejects rate 0, full 0.
 
-## Why there was no free node
+## Why the bot did not send
 
-The desk kept public nodes 1, 5 (local numbers) through HOLD-4. The bot's local config holds the desk's other candidates and three more public endpoints. They were read at 2026-11-13T22:16:31Z, **LATE: 31 s after the pinned minute had started**:
+> Correction, 2026-11-13 after the minute: the first version of this file said `no-free-node`. That was wrong. The free check found one free node (extra 4: synced, DAA moving, a different kaspad from the desk's kept nodes and from our own), but it ran only after the pinned minute had started, so the bot did not send. Under GO-BOT that is `NO SEND` and `suspend` (woke after the minute). The table is the check as it ran.
 
-The bot first read HOLD-3 on origin at 2026-11-13T22:16:27Z; its free check could not be made before the minute.
+The desk kept public nodes 1, 5 (local numbers) through HOLD-4. They and the bot's other candidates were read at 2026-11-13T22:16:31Z, **31 s after the pinned minute had started**.
+
+The bot first read HOLD-3 on origin at 2026-11-13T22:16:27Z, 245 s after its On origin time: two of the bot machine's fetches from origin hung (76 s and 320 s, logged), so the free check could not be made before the minute.
 
 | Node (bot label) | In the desk's kept set | Answered | Synced, DAA moving | Same kaspad as a kept node |
 |---|---|---|---|---|
@@ -22,8 +24,8 @@ The bot first read HOLD-3 on origin at 2026-11-13T22:16:27Z; its free check coul
 | extra 1 | no | yes | yes | yes |
 | extra 2 | no | yes | yes | yes |
 | extra 3 | no | yes | yes | yes |
-| extra 4 | no | yes | yes | no |
+| extra 4 | no | yes | yes | no (free) |
 
-Same kaspad means the same node id, read in the same pass, as a node in the kept set. A send there is a send on a node the desk is still using, and a second process on that node. GO-BOT says to skip a node that does not answer synced and not to take a node the desk is still using. Nothing was left, so the line is `NO SEND` and `no-free-node`. The bot did not wait for a node to appear. Coins were not the reason.
+Nothing was sent: submit-OK 0, attempts 0. Coins were not the reason.
 
 No txid, key, seed, address, host, port, or covenant id is in this file.
